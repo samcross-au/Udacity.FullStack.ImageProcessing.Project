@@ -4,9 +4,11 @@
   "description": "Project repo for Udacity's first Full Stack JavaScript Nanodegree project",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.ts",
-    "build": "npx tsc",
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts",
+    "lint:f": "eslint src/**/*.ts --fix",
     "jasmine": "jasmine",
+    "start": "nodemon src/index.ts",
     "test": "npm run build && npm run jasmine"
   },
   "author": "",
