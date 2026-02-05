@@ -13,7 +13,7 @@ app.listen(PORT, () => {
 app.use("/", logger, routes);
 
 app.use((error: any, request: Request, response: Response, next: NextFunction) => {
-    response.send(`<h1 style="text-align: center;color:red;">${error.message}</h1>`);
+  response.send(`<h1 style="text-align: center;color:red;">${error.message}</h1>`);
 });
 
 export default app;

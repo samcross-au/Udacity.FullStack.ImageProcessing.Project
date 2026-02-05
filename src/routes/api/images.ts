@@ -37,14 +37,14 @@ export const createImage = async (imageProperties: ImageProperties) : Promise<vo
   if (await fileExists(thumbPath)) {
     return;
   }
-
+  
   await sharp(fullPath)
-    .resize(Number(imageProperties.width), Number(imageProperties.height))
-    .toFile(thumbPath)
-    .catch((err) => {
-      console.error(err);
-      throw new Error('Error processing the image.');
-    });
+  .resize(Number(imageProperties.width), Number(imageProperties.height))
+  .toFile(thumbPath)
+  .catch((err) => {
+    console.error(err);
+    throw new Error('Error processing the image.');
+  });
 }
 
 images.get('/', async (req, res) => {
@@ -53,12 +53,12 @@ images.get('/', async (req, res) => {
     width: req.query.width as string || null,
     height: req.query.height as string || null,
   };
-
+  
   const queryValidation = await validateImageQuery(imageProperties);
-
+  
   const fullImagePath  = getFullImagePath(imageProperties);
   const thumbImagePath = getThumbImagePath(imageProperties);
-
+  
   if (
     !queryValidation.filenameExists||
     !queryValidation.widthExists ||
@@ -69,11 +69,11 @@ images.get('/', async (req, res) => {
     const message = errorMessage(queryValidation);
     return res.status(400).send(`There were some issues building your thumbnail:${message}`);
   }
-
+  
   if (!await fileExists(fullImagePath)) {
     return res.status(400).send('The specified image file does not exist in the full directory.');
   }
-
+  
   try {
     await createImage(imageProperties);
   } catch (err) {

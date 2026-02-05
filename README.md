@@ -83,3 +83,5 @@ to run the JS code
 ```
 node dist/index.js
 ```
+
+Udacity.FullStack.ImageProcessing.Project

@@ -28,7 +28,7 @@ export const validateImageQuery = async (properties: ImageProperties) : Promise<
     validateDimension(properties.width),
     validateDimension(properties.height),
   ]);
-
+  
   return {
     filenameExists,
     widthExists,
